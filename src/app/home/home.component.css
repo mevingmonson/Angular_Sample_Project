@@ -1,0 +1,35 @@
+.grey
+{
+    color:darkorange;
+}
+.large{
+    font-size: 4em;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;padding: 0;
+}
+
+li {
+        background: rgb(238, 238, 238);
+        padding: 30px;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: 60px auto;
+        margin:10px 20px 10px 20px;
+}
+
+p {
+            font-weight: bold;
+            margin-left: 20px;
+}
+
+img {
+            border-radius: 50%;
+            width: 100%;
+}
+    
+details{
+    
+}

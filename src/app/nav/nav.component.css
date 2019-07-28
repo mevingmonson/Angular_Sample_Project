@@ -1,0 +1,27 @@
+header {
+    background: rgb(48, 3, 92)
+}
+
+
+ul{
+    list-style-type: none;
+    margin-top: 8px;
+    margin-left: 850px;
+}
+
+li{
+    float: left;
+}
+
+a{
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 10px;
+    color: darkturquoise;
+    font-weight: bold;
+}
+
+
+a:hover{
+    background: #6cabfd
+}
