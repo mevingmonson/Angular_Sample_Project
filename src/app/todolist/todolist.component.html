@@ -1,9 +1,127 @@
-<p>
-  todolist works!
-</p>
-<!-- <div cdkDropList #listOne="cdkDropList" [cdkDropListConnectedTo]="[listTwo]"></div>
-<div cdkDropList #listTwo="cdkDropList" [cdkDropListConnectedTo]="[listOne]"></div> -->
-
-<div cdkDrag>
-  I'm Draggable
+ <div class="container">
+  <h4 style="color:rgb(22, 6, 92); font-size:4.5em; text-align: center; text-shadow: -3px 0px 0px black; box-shadow: 0 0 20px 4px black;" >TO-DO LIST</h4>
 </div>
+<br>
+<div class="container p-5">
+  <form  (ngSubmit)="onSubmit(f)" #f="ngForm"> 
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label>New Task</label>
+        <input type="text" class="form-control" name="taskName" ngModel>
+      </div>
+    </div>
+  
+    <div class="col-6">
+      <button type="submit" class="btn btn-success" value="Add Item">Add Item </button>
+    </div>
+  </div>
+</form>
+<br> <hr>
+<div class="board">
+    <div class ="row">
+      <div class="col-lg-6">
+        <div class="card">
+            <div class = "card-header">
+                <h2> To do</h2>
+            </div>
+        
+          
+          <cdk-drop #todoList [data]="todo" [connectedTo]="[doneList, cancelledList]" class="list-group list-group-flush"  (dropped)="drop($event)">
+          <div class="list-group-item list-group-item-warning"  *ngFor="let item of todo" cdkDrag>
+            <p class="mb-1"> {{ item.title | titlecase }} </p>
+          
+            <small class="text-muted"> {{ item.dateAdded | date:'short' }} </small>
+            <img *cdkDragPreview [src]="item.poster" [alt]="item.title">
+          </div>
+          </cdk-drop>
+      </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="card">
+      <div class = "card-header">
+          <h2> Done and Dusted</h2>
+      </div>
+          <cdk-drop #doneList [data]="done" [connectedTo]="[todoList, cancelledList]" class="list-group list-group-flush" (dropped)="drop($event)">
+              <div class="list-group-item list-group-item-success"  *ngFor="let item of done" cdkDrag>
+                <p class="mb-1"> {{ item.title | titlecase }} </p>
+                <small class="text-muted"> {{ item.dateAdded | date:'short' }} </small>
+                <img *cdkDragPreview [src]="item.poster" [alt]="item.title">
+              </div>
+          </cdk-drop>
+          
+      </div>
+      </div>
+     
+    </div>
+     
+   
+ 
+</div>
+<!-- 
+    <div class="box" cdkDrag>Drag me around!</div> 
+    <div class="col-12 text-right">
+      <button (click)="addItem(todolist.value, todoitem.value)" class="btn  btn-primary">
+        Add Item
+      </button>
+    </div>
+  </div>
+</div>
+<div cdkDrop>
+  <div *ngFor="let item of items" cdkDrag>{{item}}</div>
+</cdkDrop>
+<div class="container p-5">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-primary">
+        <div class="card-header text-white">
+          <h2> To do</h2>
+        </div>
+       <cdk-drop class="list-group list-group-flush" #todoList [data]="todo" [connectedTo]="[doneList, cancelledList]"
+          (dropped)="drop($event)">
+          <div *ngFor="let item of todo" cdkDrag>   
+          <p> {{ item.title | titlecase }} </p>
+            <small class="text-muted"> {{ item.dateAdded | date:'short' }} </small>
+          </div>
+        </cdk-drop> 
+      </div>  -->
+    <!---
+    </div>
+
+  -->
+  <!--
+    <div class="col">
+      <div class="card bg-success">
+        <div class="card-header text-white">
+          <h2>Done</h2>
+        </div>
+        <cdk-drop #doneList [data]="done" [connectedTo]="[todoList, cancelledList]" class="list-group list-group-flush"
+          (dropped)="drop($event)">
+          <div class="list-group-item list-group-item-success" *ngFor="let item of done" cdkDrag>
+            <p class="mb-1"> {{ item.title | titlecase }} </p>
+            <small class="text-muted"> {{ item.dateAdded | date:'short' }} </small>
+          </div>
+        </cdk-drop>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card bg-warning">
+        <div class="card-header text-white">
+          <h2>Cancelled</h2>
+        </div>
+        <cdk-drop #cancelledList [data]="cancelled" [connectedTo]="[todoList, doneList]" class="list-group list-group-flush"
+          (dropped)="drop($event)">
+          <div class="list-group-item list-group-item-warning" *ngFor="let item of cancelled" cdkDrag>
+            <p class="mb-1"> {{ item.title | titlecase }} </p>
+            <small class="text-muted"> {{ item.dateAdded | date:'short' }} </small>
+          </div>
+        </cdk-drop>
+      </div> 
+    </div>
+   
+  -->
+
+
+   <div cdkDrag>
+    <h4  style="font-size: 3em">See, I'm Draggable</h4>  
+    </div>
